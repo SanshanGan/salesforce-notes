@@ -81,6 +81,17 @@ Lightning record page and actual page layout
 | Lightning record page | User Interface: Highlight panel, path component, related list, activities, chatter .etc |
 | Page layout           | Details: fields you can see, Related list: what you can put on                          |
 
+
+## 4. Profiles
+> Define how users access objects and data, and what they can do within the application. When you create users, you assign a profile to each one.
+
+- Standard Profiles cannot be edited
+- Controller by **Record type assignment**, **Assigned apps**, **Security at the field-level**
+### Highly-related Concepts:
+- **Object permissions** specify the type of access that users have to objects.
+## 5. Permission Sets
+> A collection of settings and permissions that give users access to various tools and functions. Permission sets **extend** users’ functional access without changing their profiles and are the recommended way to manage your users’ permissions.
+
 # II. Object Manager and Lighting App Builder
 
 ## 1. Relationships
@@ -227,6 +238,8 @@ summary:
 > managers, opportunities, and customers by territory, give another way to sort CRM data and gives executives a better
 > picture of the business by area.
 
+# IV. Service and Support Applications
+
 # V. Productivity and Collaboration
 
 ## 1. AppExchange
@@ -279,6 +292,7 @@ flowchart LR
     N --> Q[Big Objects] --> T[Huge amount of data]
     M --> U[Data Loader]
     M --> V[Data Export Service]
+    a --> c[Use case --Transfer records from one user to another user: Open opportunities, closed opportunities, open cases, closed cases]
 
 ```
 
@@ -442,6 +456,10 @@ erDiagram
 ## 2. Approval Process
 
 > Used to automate the approval of records in Salesforce.
+
+### Initial submission actions
+- The value of a field on the record can be updated
+- An outbound message can be sent to another application
 
 ### Summary:
 
