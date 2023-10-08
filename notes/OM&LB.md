@@ -41,23 +41,22 @@ graph LR
 | Relationship                            | Formula                                                            |
 | Stores a reference to the parent record | Used to perform calculations or retrieve data from related objects |
 
-
-###  Change Field Data Type & Delete Fields:
+### Change Field Data Type & Delete Fields:
 
 #### Change Field Data Type
+
 - Custom Field Data type can be changed, standard fields cannot.
 - May cause [data loss](https://help.salesforce.com/s/articleView?id=sf.notes_on_changing_custom_field_types.htm&type=5)
 - Not every custom field type can be changed
 - Not for Lead mapped fields
 
-
 #### Delete Fields
+
 - Standard fields cannot be deleted, only custom fields can
 - Can be restored
 - 15 days in the recycle bin before permanent deletion
 - Data restored when field restored
 - Field history data can not be restored
-
 
 ## 3. Lightning App Builder
 
@@ -81,16 +80,35 @@ Lightning record page and actual page layout
 | Lightning record page | User Interface: Highlight panel, path component, related list, activities, chatter .etc |
 | Page layout           | Details: fields you can see, Related list: what you can put on                          |
 
-
 ## 4. Profiles
-> Define how users access objects and data, and what they can do within the application. When you create users, you assign a profile to each one.
+
+> Define how users access objects and data, and what they can do within the application. When you create users, you
+> assign a profile to each one.
 
 - Standard Profiles cannot be edited
 - Controller by **Record type assignment**, **Assigned apps**, **Security at the field-level**
+- Login IP ranges
+
 ### Highly-related Concepts:
+
 - **Object permissions** specify the type of access that users have to objects.
+
 ## 5. Permission Sets
-> A collection of settings and permissions that give users access to various tools and functions. Permission sets **extend** users’ functional access without changing their profiles and are the recommended way to manage your users’ permissions.
+
+> A collection of settings and permissions that give users access to various tools and functions. Permission sets *
+*extend** users’ functional access without changing their profiles and are the recommended way to manage your users’
+> permissions.
+
+## 6. Login IP Range & Trusted IP Addresses
+
+### Summary:
+
+| Login IP Range                                                         | Trusted IP Addresses                                                                       |
+|------------------------------------------------------------------------|--------------------------------------------------------------------------------------------|
+| Profile level                                                          | Org level                                                                                  |
+| Prevent users from logging in from the one isn't within Login IP Range | Dosen't prevent users from logging in from the one which out of the Trusted IP Addresses   |
+|                                                                        | Login in from the Trusted IP Addresses, there is **no** verification check                 |
+|                                                                        | Login in outside the Trusted IP Addresses, users are required to pass a verification check |
 
 # II. Object Manager and Lighting App Builder
 
@@ -393,6 +411,8 @@ flowchart LR
     - Schedule the frequency of the snapshot are taken
     - Use case:
         - Manager wants to see how the Opportunity Pipeline has changed over time
+5. **Numbers to remember**
+   - Max **4** as long as the objects have associations can be added to a custom report type
 
 ### Highly-related Concepts:
 
@@ -427,6 +447,9 @@ flowchart LR
 - Another user
 - The dashboard viewer(This is **Dynamic Dashboard**)
 
+#### 3. Numbers to remember
+- Max components that can be added to a single Dashboard: 15
+
 # VII. Workflow/Process Automation
 
 ## 0. Order of Execution
@@ -458,6 +481,7 @@ erDiagram
 > Used to automate the approval of records in Salesforce.
 
 ### Initial submission actions
+
 - The value of a field on the record can be updated
 - An outbound message can be sent to another application
 
