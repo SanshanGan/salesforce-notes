@@ -110,6 +110,20 @@ Lightning record page and actual page layout
 |                                                                        | Login in from the Trusted IP Addresses, there is **no** verification check                 |
 |                                                                        | Login in outside the Trusted IP Addresses, users are required to pass a verification check |
 
+## 7. Org Wide Defaults
+
+### Summary:
+
+- Set baseline record access for all users
+- Various access levels including(Based on the object): Public Read/Write, Public Read Only, Private
+- Record access can only be **opened up** by sharing rules, not **restricted**
+- Org Wide Defaults do not override profile settings
+
+## 8. Currency
+
+> By default, Salesforce organizations use a single currency. Once you set the required currency locale in your company
+> settings, all currency values on records display in that currency.
+
 # II. Object Manager and Lighting App Builder
 
 ## 1. Relationships
@@ -166,7 +180,9 @@ Lightning record page and actual page layout
 
 ### *Highly-related Concepts:
 
-Page Layout can be assigned based on Record Types and Profiles.
+- Page Layout can be assigned based on Record Types and Profiles.
+- Business processes display different **picklist** values according to each user’s **profile** but do not assign
+  records.
 
 ```mermaid
 flowchart
@@ -296,7 +312,9 @@ flowchart LR
     B --> E[Validation Rules] --> F[Data meets a certain criteria]
     C --> H[Upload data]
     C --> K[Mass Tools]
-    C --> M[Backup and Export data]
+    C --> M[Native Backup and Export options]
+    M --> e[Data]
+    M -.-> f[Metadata]
     H --> I[Data Import Wizard]
     H --> J[Data Loader]
     K --> W[Mass Delete]
@@ -308,8 +326,12 @@ flowchart LR
     N --> O[Data Storage] --> R[Any records in org, leads, accounts etc]
     N --> P[File Storage] --> S[attachments or images]
     N --> Q[Big Objects] --> T[Huge amount of data]
-    M --> U[Data Loader]
-    M --> V[Data Export Service]
+    e --> U[Data Loader]
+    e --> V[Data Export Service]
+    e --> d[Report Export]
+    f -.-> g[Change Sets]
+    f -.-> h[Sandbox Refresh]
+    f -.-> i[Force.com Migration Tool]
     a --> c[Use case --Transfer records from one user to another user: Open opportunities, closed opportunities, open cases, closed cases]
 
 ```
@@ -412,7 +434,7 @@ flowchart LR
     - Use case:
         - Manager wants to see how the Opportunity Pipeline has changed over time
 5. **Numbers to remember**
-   - Max **4** as long as the objects have associations can be added to a custom report type
+    - Max **4** as long as the objects have associations can be added to a custom report type
 
 ### Highly-related Concepts:
 
@@ -448,6 +470,7 @@ flowchart LR
 - The dashboard viewer(This is **Dynamic Dashboard**)
 
 #### 3. Numbers to remember
+
 - Max components that can be added to a single Dashboard: 15
 
 # VII. Workflow/Process Automation
