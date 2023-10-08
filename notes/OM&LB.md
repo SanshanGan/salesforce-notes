@@ -110,19 +110,95 @@ Lightning record page and actual page layout
 |                                                                        | Login in from the Trusted IP Addresses, there is **no** verification check                 |
 |                                                                        | Login in outside the Trusted IP Addresses, users are required to pass a verification check |
 
-## 7. Org Wide Defaults
-
-### Summary:
-
-- Set baseline record access for all users
-- Various access levels including(Based on the object): Public Read/Write, Public Read Only, Private
-- Record access can only be **opened up** by sharing rules, not **restricted**
-- Org Wide Defaults do not override profile settings
-
 ## 8. Currency
 
 > By default, Salesforce organizations use a single currency. Once you set the required currency locale in your company
 > settings, all currency values on records display in that currency.
+
+## 9. All about access
+
+### Diagram:
+
+> Start from the most restrictive level of access, and then grant additional access as needed.
+
+![img_1.png](img_1.png)
+
+```mermaid
+graph LR
+    A[Three layer]
+    A --> B[Object Access] --> E[Set by Profiles]
+    A --> C[Record Access] --> K[Set by multiple ways based on different scenarios]
+    A --> D[Field Access] --> L[Set by Profile level/Object level]
+    E:::someclass
+    classDef someclass fill: #f96
+    L:::someclass
+    classDef someclass fill: #f96
+    C --> F[1.Organization-Wide Defaults]
+    C --> G[2.Role Hierarchy]
+    C --> H[3.Sharing Rules]
+    C --> I[4.Manual Sharing]
+    C --> J[5.Team Sharing]
+
+```
+
+### 0. CRED Access
+
+- Create
+- Read
+- Edit(same as update)
+- Delete
+
+### 1. Object Access
+
+- Tab setting which controls object visibility
+    - Hidden
+    - Default On
+    - Default Off
+- Set object permission with CRED
+    - Special permission: **View All**, **Modify All**
+        - Users can view and read, edit, delete, transfer, and approve all records of that object, regardless of sharing
+          settings.
+
+### 2. Record Access
+
+> Control which records users has access to and their level of access
+
+**Notice:** <font color = red>User cannot gain access to a record even through sharing feature without the object
+access</font>
+
+#### 2.1. Organization-Wide Defaults
+
+- Set baseline record access for all users
+- Various access levels including(Based on the object): <font color = green>Public Read/Write, Public Read Only,
+  Private</font>
+- Record access can only be **opened up** by sharing rules, not **restricted**
+- Org Wide Defaults do not override profile settings
+
+#### 2.2. Role Hierarchy
+
+> Make sure managers have access to the same records as their subordinates
+
+#### 2.3. Sharing Rules
+
+- Owner-Based Sharing Rules
+- Criteria-Based Sharing Rules
+
+#### 2.4. Manual Sharing
+
+#### 2.5. Team Sharing
+
+### 3. Field Access/Field Level Security
+
+> Control which fields users have access to and their level of access
+
+#### 3.1. In Profiles
+
+> Define every field with two checkboxes: Read access, Edit access
+
+#### 3.2. In Object manager
+
+> Select a single object, then select fields & relationship, choose a field(For different profiles) to edit: Visible,
+> Read-Only
 
 # II. Object Manager and Lighting App Builder
 
