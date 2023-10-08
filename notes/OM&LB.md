@@ -41,6 +41,11 @@ graph LR
 | Relationship                            | Formula                                                            |
 | Stores a reference to the parent record | Used to perform calculations or retrieve data from related objects |
 
+### Lookup Relationship & Cross-Object Formula field
+
+> A cross-object formula field can be created on opportunity object to display data from industry field on account
+> object using account ID lookup relationship.
+
 ### Change Field Data Type & Delete Fields:
 
 #### Change Field Data Type
@@ -364,11 +369,15 @@ summary:
 - Lighting Data
 - Components
 
+**Also, you can find an expert to help you with your Salesforce implementation**
+
 ### Summary:
 
 ```mermaid
 graph LR
-    A[AppExchange] --> B[Apps] --> G[Expand functionality of Salesforce]
+    L[AppExchange] --> A
+    L --> M[Consultants]
+    A[Solutions] --> B[Apps] --> G[Expand functionality of Salesforce]
     A --> C[Bolt Solutions] --> H[Pre-built templates for Experience Cloud]
     A --> D[Flow Solutions] --> I[Pre-built Flows]
     A --> E[Lighting Data] --> J[Enrich Org data]
@@ -624,6 +633,9 @@ erDiagram
 - Schedule-Triggered Flow
 - Auto-launched Flow(No Trigger)
 - Record-Triggered Flow
+    - Involve two `types`
+        - Fast Field Updates(AKA.Before-Save Flow)
+        - Actions and Related Records(AKA.After-Save Flow)
 - Platform Event-Triggered Flow
 
 ## 5. Summary
