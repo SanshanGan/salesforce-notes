@@ -85,6 +85,8 @@ Lightning record page and actual page layout
 | Lightning record page | User Interface: Highlight panel, path component, related list, activities, chatter .etc |
 | Page layout           | Details: fields you can see, Related list: what you can put on                          |
 
+- Lightning page allows you to customize a **record page** and add a **screen flow** as a component
+
 ## 4. Profiles
 
 > Define how users access objects and data, and what they can do within the application. When you create users, you
@@ -104,6 +106,15 @@ Lightning record page and actual page layout
 *extend** users’ functional access without changing their profiles and are the recommended way to manage your users’
 > permissions.
 
+- Component visibility allows you to restrict access to of a related list based on the permission set
+
+```mermaid
+graph LR
+    A[Component visibility]
+    B[Permission set]
+    A -- based on --- B
+```
+
 ## 6. Login IP Range & Trusted IP Addresses
 
 ### Summary:
@@ -111,9 +122,21 @@ Lightning record page and actual page layout
 | Login IP Range                                                         | Trusted IP Addresses                                                                       |
 |------------------------------------------------------------------------|--------------------------------------------------------------------------------------------|
 | Profile level                                                          | Org level                                                                                  |
-| Prevent users from logging in from the one isn't within Login IP Range | Dosen't prevent users from logging in from the one which out of the Trusted IP Addresses   |
+| Prevent users from logging in from the one isn't within Login IP Range | Doesn't prevent users from logging in from the one which out of the Trusted IP Addresses   |
 |                                                                        | Login in from the Trusted IP Addresses, there is **no** verification check                 |
 |                                                                        | Login in outside the Trusted IP Addresses, users are required to pass a verification check |
+
+### Highly-related Concepts:
+
+1. User Login via user interface
+
+- Check authentication based on User's **profile** settings and **permissions**
+    - Including **Login hours**, **Login IP Range**
+    - Two-factor authentication
+
+## 7. Omni-Channel
+
+> Allows agents to work on multiple cases or chats based on availability, capacity, and skills.
 
 ## 8. Currency
 
@@ -155,7 +178,7 @@ graph LR
 
 ### 1. Object Access
 
-- Tab setting which controls object visibility
+- **Tab setting** which controls object visibility
     - Hidden
     - Default On
     - Default Off
@@ -190,6 +213,11 @@ access</font>
 
 #### 2.4. Manual Sharing
 
+##### User case:
+
+> When a user is deactivated, the role is removed and any manual sharing involving the user is deleted. If the user is
+> reactivated, the role restored but the **manual sharing does not**.
+
 #### 2.5. Team Sharing
 
 ### 3. Field Access/Field Level Security
@@ -207,8 +235,16 @@ access</font>
 
 ## 10. Security
 
-<font color = orange>**Contact**, **Lead**, **Person Account** </font>are three objects that have individual field
-avaliable for tracking data privacy information when data protection is enabled.
+- <font color = orange>**Contact**, **Lead**, **Person Account** </font>are three objects that have individual field
+  available for tracking data privacy information when data protection is enabled.
+- **Security Health Check** includes:
+    - <font color = orange>**Password Policies**</font> used to enforce password complexity and expiration
+    - <font color = orange>**Session Settings**</font> used to restrict access to Salesforce from specific IP addresses
+    - <font color = orange>**Remote Site Settings**</font> used to restrict login access to Salesforce from specific
+      hours of the day
+- <font color = orange>**Session**</font> used to configure user session settings, such as session timeout, session
+  security
+  level
 
 # II. Object Manager and Lighting App Builder
 
@@ -267,8 +303,9 @@ avaliable for tracking data privacy information when data protection is enabled.
 ### *Highly-related Concepts:
 
 - Page Layout can be assigned based on Record Types and Profiles.
-- Business processes display different **picklist** values according to each user’s **profile** but do not assign
-  records.
+- Page Layout editor can customize related list on **detail** page by add or remove fields.
+- ~~Business processes display different **picklist** values according to each user’s **profile** but do not assign
+  records.~~
 
 ```mermaid
 flowchart
@@ -305,8 +342,21 @@ flowchart
 **Path Key Fields:**
 
 - **Key fields**display in**Lightning Experience**as part of the Sales Path feature (not available in classic). To
-  display Key Fields in Lightning Experience, we have to**Enable**the Sales Path.**Lead and Opportunity** object can
+  display Key Fields in Lightning Experience, we have to**Enable**the Sales Path. **Lead and Opportunity** object can
   have Key fields. You can include both**Standard**and**Custom fields**.
+
+## 5. Object
+
+### Types
+
+- Standard Objects
+    - include with SF by default, but also can be created by users
+- Custom Objects
+    - Custom objects automatically include some standard fields
+        - CreatedById
+        - Currency
+        - Name
+        - ....
 
 # III. Sales and Marketing Applications
 
@@ -334,6 +384,10 @@ flowchart
 
 - Campaign Members status(custom picklist field) can be added up to 50 options.
 
+- To customize Campaign Member Status picklist values by marketing users themselves, it needs:
+    - A marketing user feature license
+    - Edit permission for campaign
+
 **Campaign Hierarchy:**
 
 scenarios:
@@ -347,7 +401,7 @@ scenarios:
 summary:
 
 - Used to track and measure Campaign influence on Opportunities
-- Prequisites: CRM User Permission
+- Prerequisite: CRM User Permission
 - Campaign Influence 1.0: One Campaign is allocated all the Opportunity Amount
 - Customizable Campaign Influence: Multiple Campaigns can be allocated the Opportunity Amount
 - Campaign Influence can be auto associated to Campaigns
@@ -392,6 +446,17 @@ graph LR
     A --> E[Lighting Data] --> J[Enrich Org data]
     A --> F[Components] --> K[Add to Lightning App pages]
 ```
+
+## 2. Chatter
+
+> A collaboration tool that lets users share information and work together in real time
+
+### 2.1. Pending Chatter Post
+
+> It is a post that has been scheduled to be published at a future date and time
+
+- **Use case**
+    - A user who creates the pending post is deactivated before the scheduled time, the post will be canceled
 
 # VI. Data and Analytics
 
@@ -478,6 +543,12 @@ flowchart LR
 #### Validation Rules
 
 > Used to enforce data quality, data entered by users meets a certain criteria
+
+Operations of creating validation rules:
+
+- Name and Description
+- The Rule(<font color = red>AKA. Error Condition Formula</font>)
+- The Error message(Include message location)
 
 ## 2. All about Report
 
@@ -644,8 +715,25 @@ erDiagram
 - Record-Triggered Flow
     - Involve two `types`
         - Fast Field Updates(AKA.Before-Save Flow)
+            - Support: Assignment, Decision, Loop, Get Records
         - Actions and Related Records(AKA.After-Save Flow)
 - Platform Event-Triggered Flow
+
+## Highly-related Concepts:
+
+TODO: Add more details
+Link：
+https://help.salesforce.com/s/articleView?id=sf.actions_overview.htm&type=5
+https://thoughtworks.udemy.com/course/pass-the-salesforce-admin-certification-2022/learn/lecture/32297690#notes
+Task and Quick Actions
+
+**1. Frequency of execution**
+
+> Recurring Task is task that repeat at a regular interval, such as daily, weekly, monthly, etc
+
+**2. External connect**
+
+> Quick action allows you initiate expense reports form SF to an external system
 
 ## 5. Summary
 
