@@ -205,6 +205,11 @@ access</font>
 > Select a single object, then select fields & relationship, choose a field(For different profiles) to edit: Visible,
 > Read-Only
 
+## 10. Security
+
+<font color = orange>**Contact**, **Lead**, **Person Account** </font>are three objects that have individual field
+avaliable for tracking data privacy information when data protection is enabled.
+
 # II. Object Manager and Lighting App Builder
 
 ## 1. Relationships
@@ -354,6 +359,10 @@ summary:
 > picture of the business by area.
 
 # IV. Service and Support Applications
+
+## 1. Service Console
+
+> Apps which are tab-based workspace for fast-paced work environment. Manage multiple records on single page.
 
 # V. Productivity and Collaboration
 
