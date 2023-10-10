@@ -107,6 +107,15 @@ graph
     G --> I[Use Case: Lightning page allows you to customize a **record page** and add a **screen flow** as a component]
 ```
 
+### Use case
+
+- Manager wants to boost productivity by providing insights at the start of each day.
+  Which three sales-specific standard Lightning components should administrator add to the homepage to meet this
+  requirement?
+    - Activities
+    - Assistant
+    - Key Deals
+
 ### Highly-related Concepts:
 
 #### All about mobile
@@ -115,7 +124,7 @@ graph
   using Lightning App Builder for Salesforce mobile app.
 - <font color = red>Utility bar </font> is a feature which is available in lightning app when visibility is limited to
   SF **mobile app**
-
+- In mobile navigation menu, <font color = red>Lightning app pages, Chatter, Dashboards</font> are available
 ## 4. Profiles
 
 > Define how users access objects and data, and what they can do within the application. When you create users, you
@@ -547,7 +556,7 @@ flowchart LR
 - No Duplicate Checking
 - Validation Rules and workflow rules and triggers will fire
 - Used by Admin only
-- Download required
+- Download required, **not in App Exchange**
 
 #### Mass Tools
 
