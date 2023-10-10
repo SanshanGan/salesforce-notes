@@ -87,6 +87,14 @@ graph LR
 - App default
 - App, record type, profile
 
+```mermaid
+graph LR
+    a[Lighting Page Assignment]
+    a --> A[Org default] --> D[Set this page as org default for all users, except when app default or other assignment is set]
+    a --> B[App default] --> E[Set it as the default page for particular app]
+    a --> C[App, record type, profile] --> F[assign the page to a specific app, record type, and profile]
+```
+
 ### Pages to create:
 
 | Page Type   | Description                                                        |
