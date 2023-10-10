@@ -125,6 +125,7 @@ graph
 - <font color = red>Utility bar </font> is a feature which is available in lightning app when visibility is limited to
   SF **mobile app**
 - In mobile navigation menu, <font color = red>Lightning app pages, Chatter, Dashboards</font> are available
+
 ## 4. Profiles
 
 > Define how users access objects and data, and what they can do within the application. When you create users, you
@@ -764,8 +765,11 @@ erDiagram
 
 TODO: Add more details
 Link：
+
 https://help.salesforce.com/s/articleView?id=sf.actions_overview.htm&type=5
+
 https://thoughtworks.udemy.com/course/pass-the-salesforce-admin-certification-2022/learn/lecture/32297690#notes
+
 Task and Quick Actions
 
 **1. Frequency of execution**
