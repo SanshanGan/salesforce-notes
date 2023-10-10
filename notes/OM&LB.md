@@ -58,6 +58,7 @@ graph LR
 #### Delete Fields
 
 - Standard fields cannot be deleted, only custom fields can
+- Can’t delete a custom field that’s referenced by a field update or Apex.
 - Can be restored
 - 15 days in the recycle bin before permanent deletion
 - Data restored when field restored
@@ -65,10 +66,26 @@ graph LR
 
 ## 3. Lightning App Builder
 
-> Used to configure the Lightning Record Page
+> Allow you to refine the appearance of org to make it easier and more accessible to users
 
+### Page Configuration
 
-Lightning record page and actual page layout
+> Can be used to configure the Lightning Record Page
+
+- Page Structure
+- Components
+- Component Visibility
+- Actions
+- Dynamic Actions
+
+### Feature
+
+- Form factor
+- Page analysis
+- Assignment
+- Org default
+- App default
+- App, record type, profile
 
 ### Pages to create:
 
@@ -78,14 +95,26 @@ Lightning record page and actual page layout
 | Home Page   | Customize the Lightning Experience Home Page                       |
 | Record Page | Customize the Lightning Experience Record Page                     |
 
+```mermaid
+graph
+    A[Lightning App Builder] --> B[App Page]
+    A --> C[Home Page]
+    A --> D[Record Page]
+    D --> E[Lightning Record Page]
+    D --> F[Actual page layout]
+    E --> G[User Interface: Highlight panel, path component, related list, activities, chatter .etc]
+    F --> H[Fields and Related Lists: what you can see & what you can put on]
+    G --> I[Use Case: Lightning page allows you to customize a **record page** and add a **screen flow** as a component]
+```
+
 ### Highly-related Concepts:
 
-| Page Display          | Description                                                                             |
-|-----------------------|-----------------------------------------------------------------------------------------|
-| Lightning record page | User Interface: Highlight panel, path component, related list, activities, chatter .etc |
-| Page layout           | Details: fields you can see, Related list: what you can put on                          |
+#### All about mobile
 
-- Lightning page allows you to customize a **record page** and add a **screen flow** as a component
+- <font color = red>App page & record page </font> are two types of pages that an administrator can build and customize
+  using Lightning App Builder for Salesforce mobile app.
+- <font color = red>Utility bar </font> is a feature which is available in lightning app when visibility is limited to
+  SF **mobile app**
 
 ## 4. Profiles
 
@@ -106,6 +135,7 @@ Lightning record page and actual page layout
 *extend** users’ functional access without changing their profiles and are the recommended way to manage your users’
 > permissions.
 
+- config what users can do with **records**
 - Component visibility allows you to restrict access to of a related list based on the permission set
 
 ```mermaid
@@ -371,7 +401,7 @@ flowchart
 ### Summary:
 
 - Used to track marketing efforts
-- Marketing User Permission(create, edit, delete Campaigns)
+- Need Marketing User Permission to create, edit, delete Campaigns
 - Contains info like: Leads in Campaign, Converted Leads, value of won Opportunities
 - Campaign Status field: standard picklist field
 - Campaign Members - Leads or Contacts, can be Accounts if enabled
@@ -529,6 +559,8 @@ flowchart LR
 - Images, documents, attachments, salesforce files, certain records
 - Can be monthly or weekly export depending on edition
 - Can be scheduled
+- Should be run from production org
+- Only export data, not **~~metadata~~**
 
 #### Data Loader
 
