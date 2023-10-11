@@ -130,9 +130,9 @@ graph
 
 - <font color = red>App page & record page </font> are two types of pages that an administrator can build and customize
   using Lightning App Builder for Salesforce mobile app.
-- <font color = red>Utility bar </font> is a feature which is available in lightning app when visibility is limited to
-  SF **mobile app**
+- The Lightning Experience utility bar isn’t available in the Salesforce mobile app.
 - In mobile navigation menu, <font color = red>Lightning app pages, Chatter, Dashboards</font> are available
+- The Lightning Experience utility bar isn’t available in the Salesforce mobile app.
 
 ## 4. Profiles
 
